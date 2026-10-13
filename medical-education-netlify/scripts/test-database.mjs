@@ -1,0 +1,2 @@
+import {build} from 'esbuild';import {spawnSync} from 'node:child_process';import {resolve} from 'node:path';
+await build({entryPoints:['tests/database.test.ts'],bundle:true,platform:'node',format:'esm',packages:'external',outfile:'tests/.database-run.mjs',plugins:[{name:'mock-source-db',setup(b){b.onResolve({filter:/^\.\.\/db\/index$/},args=>({path:resolve('tests/database-mock.ts')}))}}]});const result=spawnSync(process.execPath,['--test','tests/.database-run.mjs'],{stdio:'inherit'});process.exit(result.status||0);

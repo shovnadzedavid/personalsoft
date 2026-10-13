@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {passwordHash,verifyPassword,signSession,verifySession,verifySecret} from '../lib/session.mjs';
+const secret='a'.repeat(64);
+test('პაროლი ინახება ჰეშად და სხვა პაროლი არ დაიშვება',()=>{const hash=passwordHash('a-good-password-123');assert.equal(verifyPassword('a-good-password-123',hash),true);assert.equal(verifyPassword('wrong-password',hash),false);assert.throws(()=>passwordHash('short'))});
+test('სესია მფლობელზეა მიბმული და ვადის გასვლისას უქმდება',()=>{const now=Date.now();const signed=signSession('owner',secret,now);assert.equal(verifySession(signed,'owner',secret,now),true);assert.equal(verifySession(signed,'attacker',secret,now),false);assert.equal(verifySession(signed,'owner',secret,now+8*3600000),false);assert.equal(verifySession(signed+'x','owner',secret,now),false);assert.equal(verifySession(signed,'owner','wrong-key',now),false)});
+test('განახლების გასაღები სავალდებულოა და სრულად უნდა ემთხვეოდეს',()=>{assert.equal(verifySecret('Bearer '+secret,secret),true);assert.equal(verifySecret('Bearer attacker',secret),false);assert.equal(verifySecret('',secret),false);assert.equal(verifySecret('Bearer '+secret,''),false)});

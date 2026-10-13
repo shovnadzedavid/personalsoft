@@ -1,0 +1,36 @@
+export type SourceConfig={id:string;name:string;urls:string[];specialty:string;category:string;enabled:boolean};
+const s=(id:string,name:string,urls:string[],specialty='მრავალპროფილური',category='ასოციაცია'):SourceConfig=>({id,name,urls,specialty,category,enabled:true});
+export const defaultSources:SourceConfig[]=[
+s('gsa','საქართველოს სტომატოლოგთა ასოციაცია',['https://gsa.ge/educational-programs/','https://gsa.ge/'],'სტომატოლოგია'),
+s('tsmu','თბილისის სახელმწიფო სამედიცინო უნივერსიტეტი',['https://tsmu.edu/ts/content/3/56/40/93/0/0','https://tsmu.edu/'],'მრავალპროფილური','უნივერსიტეტი'),
+s('mcg','მედიქლაბჯორჯია — სასწავლო რესურს ცენტრი',['https://www.mcg.ge/ka/lrc/courses'],'გადაუდებელი მედიცინა','სასწავლო ცენტრი'),
+s('geomedi','უნივერსიტეტი გეომედი',['https://geomedi.edu.ge/?page_id=3886','https://geomedi.edu.ge/'],'მრავალპროფილური','უნივერსიტეტი'),
+s('geosc','საქართველოს კარდიოლოგთა საზოგადოება',['https://geosc.ge/'],'კარდიოლოგია'),
+s('geosco','საქართველოს კარდიო-ონკოლოგიური საზოგადოება',['https://geosco.ge/'],'კარდიოლოგია / ონკოლოგია'),
+s('gaem','საქართველოს ენდოკრინოლოგიისა და მეტაბოლიზმის ასოციაცია',['https://gaem.ge/','https://www.conference.gaem.ge/'],'ენდოკრინოლოგია'),
+s('inn','ნევროლოგიისა და ნეიროფსიქოლოგიის ინსტიტუტი',['https://www.inn.org.ge/პროფესიული-განათლება/','https://www.inn.org.ge/'],'ნევროლოგია','ინსტიტუტი'),
+s('genetics','საქართველოს სამედიცინო გენეტიკისა და ეპიგენეტიკის საზოგადოება',['https://geneticsgeorgia.org/'],'გენეტიკა / ლაბორატორიული მედიცინა'),
+s('sibere','ღირსეული სიბერე — საგანმანათლებლო პროგრამები',['https://sibere.ge/'],'ნევროლოგია / ფსიქიატრია','პროექტი'),
+s('child-neuro','საქართველოს ბავშვთა ნევროლოგთა და ნეიროქირურგთა ასოციაცია',['https://childneurology.ge/'],'ბავშვთა ნევროლოგია'),
+s('colorectal','საქართველოს კოლორექტულ ქირურგთა ასოციაცია',['https://colorectalsurgery.ge/ka/events','https://colorectalsurgery.ge/'],'ქირურგია'),
+s('glma','საქართველოს ლაბორატორიული მედიცინის ასოციაცია',['https://glma.ge/'],'ლაბორატორიული მედიცინა'),
+s('gams','საქართველოს სამედიცინო სპეციალობების ასოციაცია',['https://gams.ge/']),
+s('gaou','საქართველოს ონკოლოგიური უროლოგიის ასოციაცია',['https://gaou.ge/'],'უროლოგია / ონკოლოგია'),
+s('gfma','საქართველოს საოჯახო მედიცინის ასოციაცია',['https://www.gfma.ge/განათლება','https://www.gfma.ge/'],'საოჯახო მედიცინა'),
+s('gacs','საქართველოს კარდიოქირურგთა ასოციაცია',['https://www.gacs.ge/ka'],'კარდიოქირურგია'),
+s('gadv','საქართველოს დერმატო-ვენეროლოგთა ასოციაცია',['https://www.gadv.ge/კონფერენციები'],'დერმატოლოგია'),
+s('hfg','HFG — სამედიცინო საგანმანათლებლო ღონისძიებები',['https://hfg.ge/'],'მრავალპროფილური','ორგანიზაცია'),
+s('hliga','ჯანდაცვის განვითარების და უფლებათა დაცვის ლიგა',['https://hliga.ge/'],'მრავალპროფილური','ორგანიზაცია'),
+s('nof','საქართველოს ექთნების ორგანიზაცია',['https://www.nof.ge/ka/'],'საექთნო საქმე','ორგანიზაცია'),
+s('gh','GH — უწყვეტი პროფესიული განვითარება',['https://gh.ge/uwyveti-profesiuli-ganvitareba/'],'მრავალპროფილური','კლინიკების ქსელი'),
+s('iut','თბილისის საერთაშორისო უნივერსიტეტი',['https://iut.edu.ge/'],'მრავალპროფილური','უნივერსიტეტი'),
+s('gruni','გრიგოლ რობაქიძის უნივერსიტეტი',['https://gruni.edu.ge/menu_content/index/676'],'სტომატოლოგია / მრავალპროფილური','უნივერსიტეტი'),
+s('ciu','კავკასიის საერთაშორისო უნივერსიტეტი',['https://ciu.edu.ge/ka/news'],'მრავალპროფილური','უნივერსიტეტი'),
+s('phig','საქართველოს საზოგადოებრივი ჯანმრთელობის ინსტიტუტი',['https://publichealth.ge/ka/programmes/sheni-academy/'],'მრავალპროფილური','ინსტიტუტი'),
+s('mfm','MFM საქართველო',['https://mfm.ge/ka/education'],'მეანობა-გინეკოლოგია / ნეონატოლოგია'),
+s('postdiplom','საქართველოს ექიმთა პოსტდიპლომური განათლების ასოციაცია',['https://www.postdiplom.ge/']),
+s('gspi','GSPI — პაროდონტოლოგიის საგანმანათლებლო პროგრამები',['https://parodontolo.ge/'],'სტომატოლოგია'),
+s('kirurgia','ქირურგიის ეროვნული ცენტრი',['https://kirurgia.ge/'],'მრავალპროფილური','კლინიკა'),
+s('abmu','ავიცენა — ბათუმის სამედიცინო უნივერსიტეტი',['https://abmu.edu.ge/ge/about/news'],'მრავალპროფილური','უნივერსიტეტი')
+];
+export function validateSourceUrl(input:string){const u=new URL(input);if(u.protocol!=='https:'||u.username||u.password||u.port||!/^([a-z0-9-]+\.)+(ge|org|com)$/i.test(u.hostname)||u.hostname.endsWith('.internal'))throw Error('წყაროსთვის მიუთითე საჯარო HTTPS ვებგვერდი (.ge, .org ან .com)');u.hash='';return u.toString()}

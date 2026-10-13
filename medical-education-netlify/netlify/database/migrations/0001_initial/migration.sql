@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS records (id text PRIMARY KEY, owner text NOT NULL, kind text NOT NULL, data text NOT NULL, revision integer NOT NULL DEFAULT 1, updated text NOT NULL);
+CREATE TABLE IF NOT EXISTS audit (id text PRIMARY KEY, owner text NOT NULL, action text NOT NULL, kind text NOT NULL, record_id text NOT NULL, created text NOT NULL);
+CREATE TABLE IF NOT EXISTS tracker_sources (id text PRIMARY KEY, config text NOT NULL, status text NOT NULL DEFAULT 'new', last_checked text, last_success text, error text, count integer NOT NULL DEFAULT 0, details text NOT NULL DEFAULT '{}', locked_until bigint NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS tracker_programs (id text PRIMARY KEY, source_id text NOT NULL, url text NOT NULL, data text NOT NULL, fingerprint text NOT NULL, first_seen text NOT NULL, last_seen text NOT NULL, changed_at text);
+CREATE TABLE IF NOT EXISTS tracker_runs (id text PRIMARY KEY, source_id text NOT NULL, started text NOT NULL, ended text, status text NOT NULL, added integer NOT NULL DEFAULT 0, changed integer NOT NULL DEFAULT 0, error text);
+CREATE TABLE IF NOT EXISTS auth_attempts (key text PRIMARY KEY, window_start bigint NOT NULL, count integer NOT NULL DEFAULT 1);
+CREATE TABLE IF NOT EXISTS job_lock (id text PRIMARY KEY, token text NOT NULL, expires bigint NOT NULL);
+CREATE INDEX IF NOT EXISTS records_owner_kind ON records(owner,kind);
+CREATE INDEX IF NOT EXISTS tracker_programs_source ON tracker_programs(source_id);
+CREATE INDEX IF NOT EXISTS tracker_runs_started ON tracker_runs(started);
